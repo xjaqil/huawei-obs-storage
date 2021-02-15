@@ -1,0 +1,46 @@
+{
+    "name": "xjaqil/huawei-obs-storage",
+    "description": "华为云OBS laravel filesystem 适配包",
+    "keywords": [
+        "huawei",
+        "obs",
+        "laravel",
+        "filesystems",
+        "storage"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "xjaqil",
+            "email": "xjaqil@163.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.3|^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Obs\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "\\Obs\\ObsServiceProvider"
+            ]
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Obs\\Test\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
