@@ -1,5 +1,27 @@
 <?php
 
+/**
+ * Copyright (c) 2011-2018 Michael Dowling, https://github.com/mtdowling <mtdowling@gmail.com>
+
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
 namespace Obs\Internal\Common;
 
 use GuzzleHttp\Exception\RequestException;
@@ -12,21 +34,10 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 
-/**
- * HTTP handler that uses PHP's HTTP stream wrapper.
- */
 class SdkStreamHandler
 {
     private $lastHeaders = [];
 
-    /**
-     * Sends an HTTP request.
-     *
-     * @param RequestInterface $request Request to send.
-     * @param array            $options Request transfer options.
-     *
-     * @return PromiseInterface
-     */
     public function __invoke(RequestInterface $request, array $options)
     {
         if (isset($options['delay'])) {
@@ -176,17 +187,6 @@ class SdkStreamHandler
         return [$stream, $headers];
     }
 
-    /**
-     * Drains the source stream into the "sink" client option.
-     *
-     * @param StreamInterface $source
-     * @param StreamInterface $sink
-     * @param string          $contentLength Header specifying the amount of
-     *                                       data to read.
-     *
-     * @return StreamInterface
-     * @throws \RuntimeException when the sink option is invalid.
-     */
     private function drain(
         StreamInterface $source,
         StreamInterface $sink,
@@ -204,14 +204,6 @@ class SdkStreamHandler
         return $sink;
     }
 
-    /**
-     * Create a resource and check to ensure it was created successfully
-     *
-     * @param callable $callback Callable that returns stream resource
-     *
-     * @return resource
-     * @throws \RuntimeException on error
-     */
     private function createResource(callable $callback)
     {
         $errors = null;

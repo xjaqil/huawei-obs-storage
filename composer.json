@@ -1,6 +1,7 @@
 {
     "name": "xjaqil/huawei-obs-storage",
     "description": "华为云OBS laravel filesystem 适配包",
+    "homepage": "https://github.com/xjaqil/huawei-obs-storage",
     "keywords": [
         "huawei",
         "obs",

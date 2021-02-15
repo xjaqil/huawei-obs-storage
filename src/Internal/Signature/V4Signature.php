@@ -1,5 +1,20 @@
 <?php
 
+/**
+ * Copyright 2019 Huawei Technologies Co.,Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+ * this file except in compliance with the License.  You may obtain a copy of the
+ * License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed
+ * under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations under the License.
+ *
+ */
+
 namespace Obs\Internal\Signature;
 
 use Obs\Internal\Common\Model;
@@ -12,9 +27,9 @@ class V4Signature extends AbstractSignature
 	
 	protected $utcTimeZone;
 	
-	public function __construct($ak, $sk, $pathStyle, $endpoint, $region, $methodName, $signature, $securityToken=false)
+	public function __construct($ak, $sk, $pathStyle, $endpoint, $region, $methodName, $signature, $securityToken=false, $isCname=false)
 	{
-	    parent::__construct($ak, $sk, $pathStyle, $endpoint, $methodName, $signature, $securityToken);
+	    parent::__construct($ak, $sk, $pathStyle, $endpoint, $methodName, $signature, $securityToken, $isCname);
 		$this->region = $region;
 		$this->utcTimeZone = new \DateTimeZone ('UTC');
 	}
